@@ -11,7 +11,6 @@ public class HelloController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public String helloWorld() {
-        log.info("Incoming Request /");
         return "hello world";
     }
 
