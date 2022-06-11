@@ -29,7 +29,7 @@ public class MataPelajaranService {
         return mataPelajaranRepository.findAll();
     }
 
-    public void save(Request request) {
+    public MataPelajaran save(Request request) {
         MataPelajaran mataPelajaran = new MataPelajaran();
         mataPelajaran.setId(System.currentTimeMillis());
         mataPelajaran.setNamaMataPelajaran(request.getNamaMataPelajaran());
@@ -38,6 +38,7 @@ public class MataPelajaranService {
         mataPelajaranRepository.save(mataPelajaran);
 
         log.info("Data {} berhasil disimpan", mataPelajaran);
+        return mataPelajaran;
     }
 
     public void deleteData(Long id) {

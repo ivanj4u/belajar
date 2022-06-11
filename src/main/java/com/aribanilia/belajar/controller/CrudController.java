@@ -47,12 +47,13 @@ public class CrudController {
     public Response saveData(@RequestBody Request request) {
         log.info("Incoming /matapelajaran/save {}", request);
 
-        mataPelajaranService.save(request);
+        MataPelajaran mataPelajaran = mataPelajaranService.save(request);
 
         log.info("Outgoing /matapelajaran/save {}", request);
 
         Response response = new Response();
         response.setMessage("Data Request berhasil disimpan");
+        response.setData(mataPelajaran);
         return response;
     }
 
