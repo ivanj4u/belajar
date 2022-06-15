@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 public class MataPelajaranService {
@@ -54,8 +56,8 @@ public class MataPelajaranService {
         return mataPelajaran;
     }
 
-    public MataPelajaran findByNamaMataPelajaran(String namaMataPelajaran) {
-        MataPelajaran mataPelajaran = mataPelajaranRepository.findByNamaMataPelajaran(namaMataPelajaran);
+    public List<MataPelajaran> findByNamaMataPelajaran(String namaMataPelajaran) {
+        List<MataPelajaran> mataPelajaran = mataPelajaranRepository.findByNamaMataPelajaranLike("%" + namaMataPelajaran + "%");
 
         log.info("Data {} berhasil ditemukan", mataPelajaran);
         return mataPelajaran;

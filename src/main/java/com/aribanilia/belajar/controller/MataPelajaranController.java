@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/matapelajaran")
@@ -91,7 +93,7 @@ public class MataPelajaranController {
     public Response findByName(@RequestParam("namaMataPelajaran") String namaMataPelajaran) {
         log.info("Incoming /matapelajaran/findbyname");
 
-        MataPelajaran mataPelajaran = mataPelajaranService.findByNamaMataPelajaran(namaMataPelajaran);
+        List<MataPelajaran> mataPelajaran = mataPelajaranService.findByNamaMataPelajaran(namaMataPelajaran);
 
         log.info("Outgoing /matapelajaran/findbyname");
         Response response = new Response();
