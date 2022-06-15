@@ -1,6 +1,6 @@
 package com.aribanilia.belajar.dto;
 
-public class Request {
+public class MataPelajaranRequest {
 
     private String kodeMataPelajaran;
     private String namaMataPelajaran;

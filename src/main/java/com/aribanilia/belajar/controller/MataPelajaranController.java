@@ -1,6 +1,6 @@
 package com.aribanilia.belajar.controller;
 
-import com.aribanilia.belajar.dto.Request;
+import com.aribanilia.belajar.dto.MataPelajaranRequest;
 import com.aribanilia.belajar.dto.Response;
 import com.aribanilia.belajar.entity.MataPelajaran;
 import com.aribanilia.belajar.service.MataPelajaranService;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/matapelajaran")
-public class CrudController {
+public class MataPelajaranController {
 
     @Autowired
     private MataPelajaranService mataPelajaranService;
@@ -44,7 +44,7 @@ public class CrudController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST, produces = "application/json")
-    public Response saveData(@RequestBody Request request) {
+    public Response saveData(@RequestBody MataPelajaranRequest request) {
         log.info("Incoming /matapelajaran/save {}", request);
 
         MataPelajaran mataPelajaran = mataPelajaranService.save(request);
@@ -107,7 +107,7 @@ public class CrudController {
     }
 
     @PostMapping(value = "/update", produces = "application/json")
-    public Response updateData(@RequestBody Request request) {
+    public Response updateData(@RequestBody MataPelajaranRequest request) {
         log.info("Incoming /matapelajaran/update {}", request);
 
         MataPelajaran mataPelajaran = mataPelajaranService.updateData(request);

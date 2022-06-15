@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class SiswaService {
 
+    /**
+     * TODO :
+     * - Validasi Request tidak boleh null
+     * - Endpoint find by nik, find by name
+     */
+
     @Autowired
     private SiswaRepository siswaRepository;
 

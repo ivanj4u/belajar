@@ -1,6 +1,6 @@
 package com.aribanilia.belajar.service;
 
-import com.aribanilia.belajar.dto.Request;
+import com.aribanilia.belajar.dto.MataPelajaranRequest;
 import com.aribanilia.belajar.entity.MataPelajaran;
 import com.aribanilia.belajar.repository.MataPelajaranRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,7 @@ public class MataPelajaranService {
         return mataPelajaranRepository.findAll();
     }
 
-    public MataPelajaran save(Request request) {
+    public MataPelajaran save(MataPelajaranRequest request) {
         MataPelajaran mataPelajaran = new MataPelajaran();
         mataPelajaran.setId(System.currentTimeMillis());
         mataPelajaran.setNamaMataPelajaran(request.getNamaMataPelajaran());
@@ -61,7 +61,7 @@ public class MataPelajaranService {
         return mataPelajaran;
     }
 
-    public MataPelajaran updateData(Request request) {
+    public MataPelajaran updateData(MataPelajaranRequest request) {
         MataPelajaran mataPelajaran = mataPelajaranRepository.findByKodeMataPelajaran(request.getKodeMataPelajaran());
 
         if (mataPelajaran == null) {
