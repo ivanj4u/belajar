@@ -49,6 +49,11 @@ public class SiswaService {
             return null;
         }
 
+        if (siswaRequest.getNik() != null){
+            log.error("NIK sudah digunakan");
+            return null;
+        }
+
         Siswa siswa = new Siswa();
         siswa.setId(System.currentTimeMillis());
         siswa.setNik(siswaRequest.getNik());
