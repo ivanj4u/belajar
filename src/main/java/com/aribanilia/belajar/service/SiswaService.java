@@ -32,6 +32,16 @@ public class SiswaService {
 
     public Siswa save(SiswaRequest siswaRequest){
 
+        if (siswaRequest.getNik().length()!=10){
+            log.error("Data NIK yang dimasukan salah");
+            return null;
+        }
+        if (siswaRequest.getJenisKelamin().equals("L")
+            && !siswaRequest.getJenisKelamin().equals("P")){
+            log.error("Jenis Kelamin wajib L atau P");
+            return null;
+        }
+
         Siswa siswa = new Siswa();
         siswa.setId(System.currentTimeMillis());
         siswa.setNik(siswaRequest.getNik());
