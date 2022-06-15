@@ -7,8 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Scanner;
-
 @Slf4j
 @Service
 public class SiswaService {
@@ -33,9 +31,6 @@ public class SiswaService {
     }
 
     public Siswa save(SiswaRequest siswaRequest){
-        
-//        String jenisKelamin1 = "L";
-//        String jenisKelamin2 = "P";
 
         Siswa siswa = new Siswa();
         siswa.setId(System.currentTimeMillis());
@@ -44,12 +39,6 @@ public class SiswaService {
         siswa.setJenisKelamin(siswaRequest.getJenisKelamin());
 
         siswaRepository.save(siswa);
-
-//        if (jenisKelamin1.equals(jenisKelamin2)){
-            log.info("Data {} berhasil disimpan", siswa);
-//        } else {
-            log.info("Data {} tidak berhasil disimpan", siswa);
-//        }
         return siswa;
     }
 

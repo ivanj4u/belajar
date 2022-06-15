@@ -59,12 +59,12 @@ public class SiswaCrudController {
 
         SiswaResponse siswaResponse = new SiswaResponse();
 
-//        if (siswa == null){
-//            siswaResponse.setMessage("Data tidak bisa disave");
-//        } else {
+        if (siswa == null){
+            siswaResponse.setMessage("Data tidak bisa disave");
+        } else {
             siswaResponse.setMessage("Data berhasil disimpan");
             siswaResponse.setData(siswa);
-//        }
+        }
         return siswaResponse;
     }
 
