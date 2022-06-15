@@ -49,12 +49,13 @@ public class SiswaService {
             return null;
         }
 
-        if (siswaRequest.getNik() != null){
+        Siswa siswa = siswaRepository.findByNik(siswaRequest.getNik());
+        if (siswa != null){
             log.error("NIK sudah digunakan");
             return null;
         }
 
-        Siswa siswa = new Siswa();
+        siswa = new Siswa();
         siswa.setId(System.currentTimeMillis());
         siswa.setNik(siswaRequest.getNik());
         siswa.setNama(siswaRequest.getNama());
