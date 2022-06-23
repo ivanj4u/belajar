@@ -79,4 +79,77 @@ public class SiswaController {
         return siswaResponse;
     }
 
+    @RequestMapping (value = "/findbynik", method = RequestMethod.GET, produces = "application/json")
+    public Response findByNik(@RequestParam ("nik") String nik){
+        log.info("incoming /siswa/findbynik");
+
+        Siswa siswa = siswaService.findByNik(nik);
+
+        log.info("outcoming /siswa/findbynik");
+        Response siswaResponse = new Response();
+
+        if (siswa == null){
+            siswaResponse.setMessage("Data gagal ditemukan");
+        } else {
+            siswaResponse.setMessage("Data berhasil ditemukan");
+            siswaResponse.setData(siswa);
+        }
+        return siswaResponse;
+    }
+
+    @RequestMapping (value = "/findbyname", method = RequestMethod.GET, produces = "application/json")
+    public Response findByName (@RequestParam ("nama") String nama){
+        log.info("incoming /siswa/findbyname");
+
+        Siswa siswa = siswaService.findByName(nama);
+
+        log.info("outcoming /siswa/findbyname");
+        Response siswaResponse = new Response();
+
+        if (siswa == null){
+            siswaResponse.setMessage("Data gagal ditemukan");
+        } else {
+            siswaResponse.setMessage("Data berhasil ditemukan");
+            siswaResponse.setData(siswa);
+        }
+        return siswaResponse;
+    }
+
+    @RequestMapping (value = "/findbyjeniskelamin", method = RequestMethod.GET, produces = "application/json")
+    public Response findByJenisKelamin (@RequestParam ("jeniskelamin") String jeniskelamin){
+        log.info("incoming /siswa/findbyjeniskelamin");
+
+        Siswa siswa = siswaService.findByJenisKelamin(jeniskelamin);
+
+        log.info("outcoming /siswa/findbyjeniskelamin");
+        Response response = new Response();
+
+        if (siswa == null){
+            response.setMessage("Data gagal ditemukan");
+        }else {
+            response.setMessage("Data berhasil ditemukan");
+            response.setData(siswa);
+        }
+        return response;
+    }
+
+    @PostMapping (value = "/update", produces = "application/json")
+    public Response updateData (@RequestBody SiswaRequest siswaRequest){
+        log.info("incoming /siswa/update {}", siswaRequest);
+
+        Siswa siswa = siswaService.updateData(siswaRequest);
+
+        log.info("outcoming /siswa/update {}", siswaRequest);
+
+        Response response = new Response();
+
+        if (siswa == null){
+            response.setMessage("Data gagal diupdate");
+        } else {
+            response.setMessage("Data berhasil diupdate");
+            response.setData(siswa);
+        }
+        return response;
+    }
+
 }

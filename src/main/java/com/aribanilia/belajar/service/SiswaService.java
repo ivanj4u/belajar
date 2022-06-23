@@ -38,10 +38,21 @@ public class SiswaService {
 
     public Siswa save(SiswaRequest siswaRequest) {
 
+        if (siswaRequest.getNik() == null){
+            log.info("Data NIK tidak boleh kosong");
+            return null;
+        }
+
         if (siswaRequest.getNik().length() != 10) {
             log.error("Data NIK yang dimasukan salah");
             return null;
         }
+
+        if (siswaRequest.getNama() == null){
+            log.info("Data Nama tidak boleh kosong");
+            return null;
+        }
+
         /**
          * Jika jenis kelamin yang dikirimkan tidak sama dengan L
          * dan
@@ -49,6 +60,11 @@ public class SiswaService {
          * maka
          * return null
          */
+        if (siswaRequest.getJenisKelamin() == null){
+            log.info("Data Jenis Kelamin tidak boleh kosong");
+            return null;
+        }
+
         if (!siswaRequest.getJenisKelamin().equals("L")
                 && !siswaRequest.getJenisKelamin().equals("P")) {
             log.error("Jenis Kelamin wajib L atau P");
@@ -75,7 +91,52 @@ public class SiswaService {
         Siswa siswa = siswaRepository.findById(id).get();
         siswaRepository.delete(siswa);
         log.info("Data {} berhasil dihapus", siswa);
+    }
 
+    public Siswa findByNik(String nik) {
+        Siswa siswa = siswaRepository.findByNik(nik);
+
+        log.info("Data {} berhasil ditemukan", siswa);
+        return siswa;
+    }
+
+    public Siswa findByName(String nama){
+        Siswa siswa = siswaRepository.findByNama(nama);
+
+        log.info("Data {} berhasil ditemukan", siswa);
+        return siswa;
+    }
+
+    public Siswa findByJenisKelamin (String jeniskelamin){
+        Siswa siswa = siswaRepository.findByJenisKelamin(jeniskelamin);
+
+        log.info("Data {} berhasil ditemukan", siswa);
+        return siswa;
+    }
+
+    public Siswa updateData (SiswaRequest siswaRequest){
+        Siswa siswa = siswaRepository.findByNik(siswaRequest.getNik());
+
+        if (siswa == null){
+            log.info("Data Siswa dengan NIK {} tidak ditemukan", siswaRequest.getNik());
+            return null;
+        }
+
+//        if (siswaRequest.getJenisKelamin() == null){
+//            log.info("Data Jenis Kelamin tidak boleh kosong");
+//        }
+//        if (!siswaRequest.getJenisKelamin().equals("L")
+//                && !siswaRequest.getJenisKelamin().equals("P")){
+//            log.error("Jenis Kelamin wajib L atau P");
+//            return null;
+//        }
+
+        siswa.setNama(siswaRequest.getNama());
+//        siswa.setJenisKelamin(siswaRequest.getJenisKelamin());
+        siswaRepository.save(siswa);
+
+        log.info("Data {} berhasil diupdate", siswa);
+        return siswa;
     }
 
 }

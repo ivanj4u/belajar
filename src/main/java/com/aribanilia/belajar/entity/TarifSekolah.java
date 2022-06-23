@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class TarifSekolah {
 
     @Id
-    @Column
+    @Column (length = 10, nullable = false)
     private Long id;
 
     @Column(length = 10)
